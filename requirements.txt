@@ -1,0 +1,16 @@
+langchain
+langchain-openai
+python-dotenv
+jupyterlab
+ipykernel
+langchain-community
+openai
+huggingface_hub
+tiktoken
+sentence-transformers
+faiss-cpu
+langchain-chroma
+pypdf
+tempfile
+streamlit
+sqlalchemy
