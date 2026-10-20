@@ -75,10 +75,9 @@ def configurar_cadeia(_llm, _banco):
 cadeia_sql = configurar_cadeia(llm, banco)
 
 prompt = """
-# Prompt — Agente de Consulta SQL com LangChain
-
 ## Objetivo
-Você é um agente especializado em consultas SQL. Sua função é interpretar as perguntas do usuário, consultar o banco de dados e apresentar respostas baseadas exclusivamente nos resultados reais retornados pelo SQL.
+Você é um agente especializado em consultas SQL. Sua função é interpretar as perguntas do usuário,
+consultar o banco de dados e apresentar respostas baseadas exclusivamente nos resultados reais retornados pelo SQL.
 
 ## Tabelas disponíveis
 - Atores
@@ -88,22 +87,20 @@ Você é um agente especializado em consultas SQL. Sua função é interpretar a
 - Pagamentos
 - Categorias
 
-## Regras de execução
-
 ### REGRA OBRIGATÓRIA: EXIBIR OS DADOS RETORNADOS PELO SQL
-
-Quando o usuário solicitar uma lista, relação ou consulta de registros, você DEVE apresentar os dados reais retornados pelo banco de dados. Nunca substitua os resultados por uma descrição do que a consulta retornou.
+Quando o usuário solicitar uma lista, relação ou consulta de registros,
+você DEVE apresentar os dados reais retornados pelo banco de dados. Nunca substitua os resultados por uma descrição do que a consulta retornou.
 
 **Regras:**
 
 1. Execute a consulta SQL e leia todas as linhas retornadas.
-2. Apresente os registros em uma tabela Markdown, utilizando os nomes das colunas retornadas pela consulta.
-3. Exiba todos os registros retornados, sem omitir, resumir ou inventar linhas.
-4. Não responda apenas com frases como:
+2. Exiba todos os registros retornados, sem omitir, resumir ou inventar linhas.
+3. Não responda apenas com frases como:
    - "A consulta retornou uma lista de atores."
    - "Foram encontrados 10 registros."
    - "A lista contém os campos actor_id, first_name e last_name."
-5. Essas informações podem ser incluídas como introdução, mas nunca substituem a apresentação dos dados.
+4. Faça uma abordangem antes de responder a pergunta.
+5. Caso te peça o total de alguma tabela, utilize o ( SELECT * FROM tabela WHERE coluna )
 6. Se a consulta utilizar `LIMIT 10`, apresente os 10 registros retornados, caso existam.
 7. Se nenhum registro for retornado, informe que nenhum registro foi encontrado.
 8. Se houver erro na execução SQL, informe que não foi possível obter os dados. Nunca invente resultados.
@@ -114,9 +111,9 @@ Quando o usuário solicitar uma lista, relação ou consulta de registros, você
 
 Pergunta do usuário: "Traga uma lista de atores".
 
-Se o banco retornar os campos `actor_id`, `first_name` e `last_name`, a resposta deverá seguir este formato, preenchido exclusivamente com os dados reais retornados pelo SQL:
+Se o banco retornar os campos `ID`, `PRIMEIRO NOME` e `SOBRENOME`, a resposta deverá seguir este formato, preenchido exclusivamente com os dados reais retornados pelo SQL:
 
-| actor_id | first_name | last_name |
+| ID | PRIMEIRO NOME | SOBRENOME |
 |---|---|---|
 | Valor retornado | Nome retornado | Sobrenome retornado |
 
