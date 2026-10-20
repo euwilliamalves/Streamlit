@@ -12,5 +12,3 @@ faiss-cpu
 langchain-chroma
 pypdf
 tempfile
-streamlit
-sqlalchemy
