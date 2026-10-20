@@ -11,4 +11,3 @@ sentence-transformers
 faiss-cpu
 langchain-chroma
 pypdf
-tempfile
